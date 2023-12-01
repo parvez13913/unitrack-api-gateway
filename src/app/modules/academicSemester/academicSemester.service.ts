@@ -14,7 +14,10 @@ const createAcademicSemester = async (req: Request): Promise<IGenericResponse> =
 
 const getAllAcademicSemester = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await HttpService.get('/academicSemesters', {
-    params: req.query
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
   });
 
   return response;
