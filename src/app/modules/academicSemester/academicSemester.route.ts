@@ -3,8 +3,9 @@ import { AcademicSemesterController } from './academicSemester.controller';
 
 const router = express.Router();
 
-router.get('/', AcademicSemesterController.getAllAcademicSemester);
+router.get('/', AcademicSemesterController.getAllAcademicSemesters);
 router.get('/:id', AcademicSemesterController.getSingleAcademicSemester);
 router.post('/', AcademicSemesterController.createAcademicSemester);
+router.patch('/:id', AcademicSemesterController.updateAcademicSemester);
 
 export const AcademicSemesterRoutes = router;

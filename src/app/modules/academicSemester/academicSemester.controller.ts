@@ -12,9 +12,9 @@ const createAcademicSemester = async (req: Request, res: Response, next: NextFun
   }
 };
 
-const getAllAcademicSemester = async (req: Request, res: Response, next: NextFunction) => {
+const getAllAcademicSemesters = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await AcademicSemesterService.getAllAcademicSemester(req);
+    const result = await AcademicSemesterService.getAllAcademicSemesters(req);
 
     sendResponse(res, result);
   } catch (error) {
@@ -32,8 +32,19 @@ const getSingleAcademicSemester = async (req: Request, res: Response, next: Next
   }
 };
 
+const updateAcademicSemester = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicSemesterService.updateAcademicSemester(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicSemesterController = {
   createAcademicSemester,
-  getAllAcademicSemester,
-  getSingleAcademicSemester
+  getAllAcademicSemesters,
+  getSingleAcademicSemester,
+  updateAcademicSemester
 };
