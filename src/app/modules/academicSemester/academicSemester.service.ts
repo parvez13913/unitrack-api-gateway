@@ -22,8 +22,20 @@ const getAllAcademicSemester = async (req: Request): Promise<IGenericResponse> =
 
   return response;
 };
+const getSingleAcademicSemester = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await HttpService.get(`/academicSemesters/${id}`, {
+    params: req.body,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
 
 export const AcademicSemesterService = {
   createAcademicSemester,
-  getAllAcademicSemester
+  getAllAcademicSemester,
+  getSingleAcademicSemester
 };
