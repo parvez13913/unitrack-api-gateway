@@ -22,9 +22,19 @@ const getAllAcademicDepartments = async (req: Request, res: Response, next: Next
   }
 };
 
-const getSingleAcademicDepartments = async (req: Request, res: Response, next: NextFunction) => {
+const getSingleAcademicDepartment = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await AcademicDepartmentService.getSingleAcademicDepartments(req);
+    const result = await AcademicDepartmentService.getSingleAcademicDepartment(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateAcademicDepartment = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicDepartmentService.updateAcademicDepartment(req);
 
     sendResponse(res, result);
   } catch (error) {
@@ -35,5 +45,6 @@ const getSingleAcademicDepartments = async (req: Request, res: Response, next: N
 export const AcademicDepartmentController = {
   createAcademicDepartment,
   getAllAcademicDepartments,
-  getSingleAcademicDepartments
+  getSingleAcademicDepartment,
+  updateAcademicDepartment
 };

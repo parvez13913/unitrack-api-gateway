@@ -23,7 +23,7 @@ const getAllAcademicDepartments = async (req: Request): Promise<IGenericResponse
   return response;
 };
 
-const getSingleAcademicDepartments = async (req: Request): Promise<IGenericResponse> => {
+const getSingleAcademicDepartment = async (req: Request): Promise<IGenericResponse> => {
   const { id } = req.params;
   const response: IGenericResponse = await HttpService.get(`/academicDepartments/${id}`, {
     headers: {
@@ -34,8 +34,24 @@ const getSingleAcademicDepartments = async (req: Request): Promise<IGenericRespo
   return response;
 };
 
+const updateAcademicDepartment = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await HttpService.patch(
+    `/academicDepartments/${id}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+
+  return response;
+};
+
 export const AcademicDepartmentService = {
   createAcademicDepartment,
   getAllAcademicDepartments,
-  getSingleAcademicDepartments
+  getSingleAcademicDepartment,
+  updateAcademicDepartment
 };

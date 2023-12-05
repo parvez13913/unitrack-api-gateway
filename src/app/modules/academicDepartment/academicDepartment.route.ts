@@ -5,8 +5,10 @@ const router = express.Router();
 
 router.get('/', AcademicDepartmentController.getAllAcademicDepartments);
 
-router.get('/:id', AcademicDepartmentController.getSingleAcademicDepartments);
+router.get('/:id', AcademicDepartmentController.getSingleAcademicDepartment);
 
 router.post('/', AcademicDepartmentController.createAcademicDepartment);
+
+router.patch('/:id', AcademicDepartmentController.updateAcademicDepartment);
 
 export const AcademicDepartmentRoutes = router;
