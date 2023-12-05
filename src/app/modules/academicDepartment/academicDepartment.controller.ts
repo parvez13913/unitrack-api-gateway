@@ -42,9 +42,20 @@ const updateAcademicDepartment = async (req: Request, res: Response, next: NextF
   }
 };
 
+const deleteAcademicDepartment = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicDepartmentService.deleteAcademicDepartment(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicDepartmentController = {
   createAcademicDepartment,
   getAllAcademicDepartments,
   getSingleAcademicDepartment,
-  updateAcademicDepartment
+  updateAcademicDepartment,
+  deleteAcademicDepartment
 };
