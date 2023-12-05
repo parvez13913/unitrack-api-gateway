@@ -12,6 +12,17 @@ const createAcademicDepartment = async (req: Request, res: Response, next: NextF
   }
 };
 
+const getAllAcademicDepartments = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicDepartmentService.getAllAcademicDepartments(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicDepartmentController = {
-  createAcademicDepartment
+  createAcademicDepartment,
+  getAllAcademicDepartments
 };
