@@ -42,9 +42,20 @@ const updateAcademicFaculty = async (req: Request, res: Response, next: NextFunc
   }
 };
 
+const deleteAcademicFaculty = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicFacultyService.deleteAcademicFaculty(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicFacultyController = {
   createAcademicFaculty,
   getAllAcademicFaculties,
   getSingleAcademicFaculty,
-  updateAcademicFaculty
+  updateAcademicFaculty,
+  deleteAcademicFaculty
 };
