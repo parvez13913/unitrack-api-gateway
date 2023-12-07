@@ -34,8 +34,20 @@ const getSingleAcademicFaculty = async (req: Request): Promise<IGenericResponse>
   return response;
 };
 
+const updateAcademicFaculty = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await HttpService.patch(`academicFaculties/${id}`, req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const AcademicFacultyService = {
   createAcademicFaculty,
   getAllAcademicFaculties,
-  getSingleAcademicFaculty
+  getSingleAcademicFaculty,
+  updateAcademicFaculty
 };

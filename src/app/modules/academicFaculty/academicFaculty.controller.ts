@@ -32,8 +32,19 @@ const getSingleAcademicFaculty = async (req: Request, res: Response, next: NextF
   }
 };
 
+const updateAcademicFaculty = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicFacultyService.updateAcademicFaculty(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicFacultyController = {
   createAcademicFaculty,
   getAllAcademicFaculties,
-  getSingleAcademicFaculty
+  getSingleAcademicFaculty,
+  updateAcademicFaculty
 };
