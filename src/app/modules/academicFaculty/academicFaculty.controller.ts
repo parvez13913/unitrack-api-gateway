@@ -22,7 +22,18 @@ const getAllAcademicFaculties = async (req: Request, res: Response, next: NextFu
   }
 };
 
+const getSingleAcademicFaculty = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicFacultyService.getSingleAcademicFaculty(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicFacultyController = {
   createAcademicFaculty,
-  getAllAcademicFaculties
+  getAllAcademicFaculties,
+  getSingleAcademicFaculty
 };
