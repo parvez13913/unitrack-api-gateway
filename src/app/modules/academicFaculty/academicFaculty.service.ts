@@ -12,6 +12,18 @@ const createAcademicFaculty = async (req: Request): Promise<IGenericResponse> =>
   return response;
 };
 
+const getAllAcademicFaculties = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await HttpService.get('academicFaculties', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const AcademicFacultyService = {
-  createAcademicFaculty
+  createAcademicFaculty,
+  getAllAcademicFaculties
 };

@@ -12,6 +12,17 @@ const createAcademicFaculty = async (req: Request, res: Response, next: NextFunc
   }
 };
 
+const getAllAcademicFaculties = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AcademicFacultyService.getAllAcademicFaculties(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AcademicFacultyController = {
-  createAcademicFaculty
+  createAcademicFaculty,
+  getAllAcademicFaculties
 };
