@@ -12,6 +12,18 @@ const createBuilding = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getAllBuildings = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get('/buildings', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const BuildingService = {
-  createBuilding
+  createBuilding,
+  getAllBuildings
 };

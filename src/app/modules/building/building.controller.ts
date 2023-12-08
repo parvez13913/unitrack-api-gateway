@@ -12,6 +12,17 @@ const createBuilding = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
+const getAllBuildings = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await BuildingService.getAllBuildings(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const BuildingController = {
-  createBuilding
+  createBuilding,
+  getAllBuildings
 };
