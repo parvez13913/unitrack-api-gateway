@@ -45,9 +45,21 @@ const updateBuilding = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteBuilding = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.delete(`/buildings/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const BuildingService = {
   createBuilding,
   getAllBuildings,
   getSingleBuilding,
-  updateBuilding
+  updateBuilding,
+  deleteBuilding
 };

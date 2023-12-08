@@ -11,4 +11,6 @@ router.post('/', BuildingController.createBuilding);
 
 router.patch('/:id', BuildingController.updateBuilding);
 
+router.delete('/:id', BuildingController.deleteBuilding);
+
 export const BuildingRoutes = router;
