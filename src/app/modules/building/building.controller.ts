@@ -22,7 +22,18 @@ const getAllBuildings = async (req: Request, res: Response, next: NextFunction) 
   }
 };
 
+const getSingleBuilding = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await BuildingService.getSingleBuilding(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const BuildingController = {
   createBuilding,
-  getAllBuildings
+  getAllBuildings,
+  getSingleBuilding
 };
