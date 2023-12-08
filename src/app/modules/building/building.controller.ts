@@ -32,8 +32,19 @@ const getSingleBuilding = async (req: Request, res: Response, next: NextFunction
   }
 };
 
+const updateBuilding = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await BuildingService.updateBuilding(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const BuildingController = {
   createBuilding,
   getAllBuildings,
-  getSingleBuilding
+  getSingleBuilding,
+  updateBuilding
 };

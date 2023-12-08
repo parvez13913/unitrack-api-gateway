@@ -9,4 +9,6 @@ router.get('/:id', BuildingController.getSingleBuilding);
 
 router.post('/', BuildingController.createBuilding);
 
+router.patch('/:id', BuildingController.updateBuilding);
+
 export const BuildingRoutes = router;

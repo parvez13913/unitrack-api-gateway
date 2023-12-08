@@ -34,8 +34,20 @@ const getSingleBuilding = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const updateBuilding = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.patch(`/buildings/${id}`, req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const BuildingService = {
   createBuilding,
   getAllBuildings,
-  getSingleBuilding
+  getSingleBuilding,
+  updateBuilding
 };
