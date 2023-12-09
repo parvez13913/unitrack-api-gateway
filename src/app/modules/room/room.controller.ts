@@ -29,8 +29,18 @@ const getSingleRoom = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const updateRoom = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await RoomService.updateRoom(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const RoomController = {
   createRoom,
   getAllRooms,
-  getSingleRoom
+  getSingleRoom,
+  updateRoom
 };
