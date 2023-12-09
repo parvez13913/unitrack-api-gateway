@@ -11,6 +11,16 @@ const createRoom = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const getAllRooms = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await RoomService.getAllRooms(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const RoomController = {
-  createRoom
+  createRoom,
+  getAllRooms
 };
