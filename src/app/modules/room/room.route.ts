@@ -11,4 +11,6 @@ router.post('/', RoomController.createRoom);
 
 router.patch('/:id', RoomController.updateRoom);
 
+router.delete('/:id', RoomController.deleteRoom);
+
 export const RoomRoutes = router;

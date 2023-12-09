@@ -45,9 +45,21 @@ const updateRoom = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteRoom = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.delete(`/rooms/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const RoomService = {
   createRoom,
   getAllRooms,
   getSingleRoom,
-  updateRoom
+  updateRoom,
+  deleteRoom
 };

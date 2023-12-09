@@ -38,9 +38,19 @@ const updateRoom = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const deleteRoom = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await RoomService.deleteRoom(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const RoomController = {
   createRoom,
   getAllRooms,
   getSingleRoom,
-  updateRoom
+  updateRoom,
+  deleteRoom
 };
