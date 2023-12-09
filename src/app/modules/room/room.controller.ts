@@ -20,7 +20,17 @@ const getAllRooms = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const getSingleRoom = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await RoomService.getSingleRoom(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const RoomController = {
   createRoom,
-  getAllRooms
+  getAllRooms,
+  getSingleRoom
 };

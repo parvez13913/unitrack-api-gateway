@@ -23,7 +23,19 @@ const getAllRooms = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getSingleRoom = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.get(`/rooms/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const RoomService = {
   createRoom,
-  getAllRooms
+  getAllRooms,
+  getSingleRoom
 };
