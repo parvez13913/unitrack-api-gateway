@@ -8,4 +8,6 @@ router.get('/:id', CourseController.getSingleCourse);
 
 router.post('/', CourseController.createCourse);
 
+router.patch('/:id', CourseController.updateCourse);
+
 export const CourseRoutes = router;
