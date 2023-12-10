@@ -10,4 +10,6 @@ router.post('/', CourseController.createCourse);
 
 router.patch('/:id', CourseController.updateCourse);
 
+router.delete('/:id', CourseController.deleteCourse);
+
 export const CourseRoutes = router;

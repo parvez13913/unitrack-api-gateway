@@ -42,9 +42,20 @@ const updateCourse = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
+const deleteCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await CourseService.deleteCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const CourseController = {
   createCourse,
   getAllCourses,
   getSingleCourse,
-  updateCourse
+  updateCourse,
+  deleteCourse
 };
