@@ -23,7 +23,19 @@ const getAllCourses = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getSingleCourse = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.get(`/courses/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const CourseService = {
   createCourse,
-  getAllCourses
+  getAllCourses,
+  getSingleCourse
 };
