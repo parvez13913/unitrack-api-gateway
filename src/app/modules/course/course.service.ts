@@ -12,6 +12,18 @@ const createCourse = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getAllCourses = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get('/courses', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const CourseService = {
-  createCourse
+  createCourse,
+  getAllCourses
 };

@@ -12,6 +12,17 @@ const createCourse = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
+const getAllCourses = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await CourseService.getAllCourses(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const CourseController = {
-  createCourse
+  createCourse,
+  getAllCourses
 };
