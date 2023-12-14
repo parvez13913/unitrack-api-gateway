@@ -42,9 +42,20 @@ const updateSemesterRegistration = async (req: Request, res: Response, next: Nex
   }
 };
 
+const deleteSemesterRegistration = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await SemesterRegistrationService.deleteSemesterRegistration(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
   getSingleSemesterRegistration,
-  updateSemesterRegistration
+  updateSemesterRegistration,
+  deleteSemesterRegistration
 };

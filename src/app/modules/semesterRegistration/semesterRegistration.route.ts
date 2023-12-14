@@ -11,4 +11,6 @@ router.post('/', SemesterRegistrationController.createSemesterRegistration);
 
 router.patch('/:id', SemesterRegistrationController.updateSemesterRegistration);
 
+router.delete('/:id', SemesterRegistrationController.deleteSemesterRegistration);
+
 export const SemesterRegistrationRoutes = router;
