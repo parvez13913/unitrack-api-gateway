@@ -12,6 +12,17 @@ const createOfferedCourse = async (req: Request, res: Response, next: NextFuncti
   }
 };
 
+const getAllOfferedCourses = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await OfferedCourseService.getAllOfferedCourses(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseController = {
-  createOfferedCourse
+  createOfferedCourse,
+  getAllOfferedCourses
 };

@@ -3,6 +3,8 @@ import { OfferedCourseController } from './offeredCourse.controller';
 
 const router = express.Router();
 
+router.get('/', OfferedCourseController.getAllOfferedCourses);
+
 router.post('/', OfferedCourseController.createOfferedCourse);
 
 export const OfferedCourseRoutes = router;
