@@ -47,9 +47,22 @@ const updateOfferedCourse = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteOfferedCourse = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+
+  const response: IGenericResponse = await CoreService.delete(`/offeredCourses/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const OfferedCourseService = {
   createOfferedCourse,
   getAllOfferedCourses,
   getSingleOfferedCourse,
-  updateOfferedCourse
+  updateOfferedCourse,
+  deleteOfferedCourse
 };
