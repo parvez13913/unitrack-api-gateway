@@ -42,9 +42,20 @@ const updateOfferedCourseSection = async (req: Request, res: Response, next: Nex
   }
 };
 
+const deleteOfferedCourseSection = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await OfferedCourseSectionService.deleteOfferedCourseSection(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseSectionController = {
   createOfferedCourseSection,
   getAllOfferedCourseSections,
   getSingleOfferedCourseSection,
-  updateOfferedCourseSection
+  updateOfferedCourseSection,
+  deleteOfferedCourseSection
 };

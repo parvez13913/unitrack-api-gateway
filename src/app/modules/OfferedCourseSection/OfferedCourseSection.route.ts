@@ -11,4 +11,6 @@ router.post('/', OfferedCourseSectionController.createOfferedCourseSection);
 
 router.patch('/:id', OfferedCourseSectionController.updateOfferedCourseSection);
 
+router.delete('/:id', OfferedCourseSectionController.deleteOfferedCourseSection);
+
 export const OfferedCourseSectionRoutes = router;
