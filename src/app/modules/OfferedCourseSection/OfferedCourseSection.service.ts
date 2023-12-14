@@ -34,8 +34,25 @@ const getSingleOfferedCourseSection = async (req: Request): Promise<IGenericResp
   return response;
 };
 
+const updateOfferedCourseSection = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+
+  const response: IGenericResponse = await CoreService.patch(
+    `/offeredCoursesSections/${id}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+
+  return response;
+};
+
 export const OfferedCourseSectionService = {
   createOfferedCourseSection,
   getAllOfferedCourseSections,
-  getSingleOfferedCourseSection
+  getSingleOfferedCourseSection,
+  updateOfferedCourseSection
 };

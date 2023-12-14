@@ -9,4 +9,6 @@ router.get('/:id', OfferedCourseSectionController.getSingleOfferedCourseSection)
 
 router.post('/', OfferedCourseSectionController.createOfferedCourseSection);
 
+router.patch('/:id', OfferedCourseSectionController.updateOfferedCourseSection);
+
 export const OfferedCourseSectionRoutes = router;
