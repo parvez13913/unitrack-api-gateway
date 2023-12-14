@@ -32,8 +32,19 @@ const getSingleOfferedCourse = async (req: Request, res: Response, next: NextFun
   }
 };
 
+const updateOfferedCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await OfferedCourseService.updateOfferedCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseController = {
   createOfferedCourse,
   getAllOfferedCourses,
-  getSingleOfferedCourse
+  getSingleOfferedCourse,
+  updateOfferedCourse
 };
