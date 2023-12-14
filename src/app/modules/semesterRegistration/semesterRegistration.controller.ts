@@ -22,7 +22,18 @@ const getAllSemesterRegistrations = async (req: Request, res: Response, next: Ne
   }
 };
 
+const getSingleSemesterRegistration = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await SemesterRegistrationService.getSingleSemesterRegistration(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
-  getAllSemesterRegistrations
+  getAllSemesterRegistrations,
+  getSingleSemesterRegistration
 };
