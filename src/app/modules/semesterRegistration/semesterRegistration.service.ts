@@ -12,6 +12,18 @@ const createSemesterRegistration = async (req: Request): Promise<IGenericRespons
   return response;
 };
 
+const getAllSemesterRegistrations = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get('/semesterRegistrations', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const SemesterRegistrationService = {
-  createSemesterRegistration
+  createSemesterRegistration,
+  getAllSemesterRegistrations
 };
