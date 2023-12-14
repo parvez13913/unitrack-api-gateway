@@ -9,4 +9,6 @@ router.get('/:id', SemesterRegistrationController.getSingleSemesterRegistration)
 
 router.post('/', SemesterRegistrationController.createSemesterRegistration);
 
+router.patch('/:id', SemesterRegistrationController.updateSemesterRegistration);
+
 export const SemesterRegistrationRoutes = router;

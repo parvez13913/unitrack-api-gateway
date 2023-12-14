@@ -34,8 +34,24 @@ const getSingleSemesterRegistration = async (req: Request): Promise<IGenericResp
   return response;
 };
 
+const updateSemesterRegistration = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+
+  const response: IGenericResponse = await CoreService.patch(
+    `/semesterRegistrations/${id}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
 export const SemesterRegistrationService = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
-  getSingleSemesterRegistration
+  getSingleSemesterRegistration,
+  updateSemesterRegistration
 };

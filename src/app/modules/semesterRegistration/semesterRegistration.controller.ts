@@ -32,8 +32,19 @@ const getSingleSemesterRegistration = async (req: Request, res: Response, next: 
   }
 };
 
+const updateSemesterRegistration = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await SemesterRegistrationService.updateSemesterRegistration(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
-  getSingleSemesterRegistration
+  getSingleSemesterRegistration,
+  updateSemesterRegistration
 };
