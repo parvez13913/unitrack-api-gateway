@@ -52,10 +52,21 @@ const deleteSemesterRegistration = async (req: Request, res: Response, next: Nex
   }
 };
 
+const startMySemesterRegistration = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await SemesterRegistrationService.startMySemesterRegistration(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
   getSingleSemesterRegistration,
   updateSemesterRegistration,
-  deleteSemesterRegistration
+  deleteSemesterRegistration,
+  startMySemesterRegistration
 };
