@@ -12,6 +12,17 @@ const createOfferedCourseSection = async (req: Request, res: Response, next: Nex
   }
 };
 
+const getAllOfferedCourseSections = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await OfferedCourseSectionService.getAllOfferedCourseSections(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseSectionController = {
-  createOfferedCourseSection
+  createOfferedCourseSection,
+  getAllOfferedCourseSections
 };

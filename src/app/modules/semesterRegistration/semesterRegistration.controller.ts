@@ -62,11 +62,22 @@ const startMySemesterRegistration = async (req: Request, res: Response, next: Ne
   }
 };
 
+const enrollIntoCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await SemesterRegistrationService.enrollIntoCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
   getSingleSemesterRegistration,
   updateSemesterRegistration,
   deleteSemesterRegistration,
-  startMySemesterRegistration
+  startMySemesterRegistration,
+  enrollIntoCourse
 };
