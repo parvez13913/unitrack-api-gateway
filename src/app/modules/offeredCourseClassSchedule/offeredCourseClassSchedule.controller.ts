@@ -30,7 +30,22 @@ const getAllOfferedCourseClassSchedules = async (
   }
 };
 
+const getSingleOfferedCourseClassSchedule = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const result = await OfferedCourseClassScheduleService.getSingleOfferedCourseClassSchedule(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseClassScheduleController = {
   createOfferedCourseClassSchedule,
-  getAllOfferedCourseClassSchedules
+  getAllOfferedCourseClassSchedules,
+  getSingleOfferedCourseClassSchedule
 };

@@ -27,7 +27,19 @@ const getAllOfferedCourseClassSchedules = async (req: Request): Promise<IGeneric
   return response;
 };
 
+const getSingleOfferedCourseClassSchedule = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.get(`/offeredCoursesClassSchedules/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const OfferedCourseClassScheduleService = {
   createOfferedCourseClassSchedule,
-  getAllOfferedCourseClassSchedules
+  getAllOfferedCourseClassSchedules,
+  getSingleOfferedCourseClassSchedule
 };
