@@ -58,9 +58,24 @@ const updateOfferedCourseClassSchedule = async (
   }
 };
 
+const deleteOfferedCourseClassSchedule = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const result = await OfferedCourseClassScheduleService.deleteOfferedCourseClassSchedule(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseClassScheduleController = {
   createOfferedCourseClassSchedule,
   getAllOfferedCourseClassSchedules,
   getSingleOfferedCourseClassSchedule,
-  updateOfferedCourseClassSchedule
+  updateOfferedCourseClassSchedule,
+  deleteOfferedCourseClassSchedule
 };

@@ -53,9 +53,24 @@ const updateOfferedCourseClassSchedule = async (req: Request): Promise<IGenericR
   return response;
 };
 
+const deleteOfferedCourseClassSchedule = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.delete(
+    `/offeredCoursesClassSchedules/${id}`,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+
+  return response;
+};
+
 export const OfferedCourseClassScheduleService = {
   createOfferedCourseClassSchedule,
   getAllOfferedCourseClassSchedules,
   getSingleOfferedCourseClassSchedule,
-  updateOfferedCourseClassSchedule
+  updateOfferedCourseClassSchedule,
+  deleteOfferedCourseClassSchedule
 };
