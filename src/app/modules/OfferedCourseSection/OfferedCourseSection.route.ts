@@ -1,9 +1,10 @@
 import express from 'express';
-import { OfferedCourseSectionController } from './OfferedCourseSection.controller';
 import validateRequest from '../../middlewares/validateRequest';
-import { OfferedCourseSectionValidation } from './OfferedCourseSection.validation';
+
 import auth from '../../middlewares/auth';
 import { ENUM_USER_ROLE } from '../../../enums/user';
+import { OfferedCourseSectionController } from './offeredCourseSection.controller';
+import { OfferedCourseSectionValidation } from './offeredCourseSection.validation';
 
 const router = express.Router();
 

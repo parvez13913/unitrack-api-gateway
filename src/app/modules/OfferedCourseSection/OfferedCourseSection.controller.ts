@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { OfferedCourseSectionService } from './OfferedCourseSection.service';
 import sendResponse from '../../../shared/response';
+import { OfferedCourseSectionService } from './offeredCourseSection.service';
 
 const createOfferedCourseSection = async (req: Request, res: Response, next: NextFunction) => {
   try {
