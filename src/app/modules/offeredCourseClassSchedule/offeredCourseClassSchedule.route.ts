@@ -3,6 +3,8 @@ import { OfferedCourseClassScheduleController } from './offeredCourseClassSchedu
 
 const router = express.Router();
 
+router.get('/', OfferedCourseClassScheduleController.getAllOfferedCourseClassSchedules);
+
 router.post('/', OfferedCourseClassScheduleController.createOfferedCourseClassSchedule);
 
 export const OfferedCourseClassScheduleRoutes = router;

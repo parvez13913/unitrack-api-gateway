@@ -16,6 +16,21 @@ const createOfferedCourseClassSchedule = async (
   }
 };
 
+const getAllOfferedCourseClassSchedules = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const result = await OfferedCourseClassScheduleService.getAllOfferedCourseClassSchedules(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const OfferedCourseClassScheduleController = {
-  createOfferedCourseClassSchedule
+  createOfferedCourseClassSchedule,
+  getAllOfferedCourseClassSchedules
 };

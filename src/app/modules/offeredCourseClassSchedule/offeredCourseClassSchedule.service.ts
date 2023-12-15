@@ -16,6 +16,18 @@ const createOfferedCourseClassSchedule = async (req: Request): Promise<IGenericR
   return response;
 };
 
+const getAllOfferedCourseClassSchedules = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get('/offeredCoursesClassSchedules', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const OfferedCourseClassScheduleService = {
-  createOfferedCourseClassSchedule
+  createOfferedCourseClassSchedule,
+  getAllOfferedCourseClassSchedules
 };
