@@ -9,4 +9,6 @@ router.get('/:id', OfferedCourseClassScheduleController.getSingleOfferedCourseCl
 
 router.post('/', OfferedCourseClassScheduleController.createOfferedCourseClassSchedule);
 
+router.patch('/:id', OfferedCourseClassScheduleController.updateOfferedCourseClassSchedule);
+
 export const OfferedCourseClassScheduleRoutes = router;

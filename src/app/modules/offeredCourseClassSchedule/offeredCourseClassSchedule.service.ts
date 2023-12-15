@@ -38,8 +38,24 @@ const getSingleOfferedCourseClassSchedule = async (req: Request): Promise<IGener
   return response;
 };
 
+const updateOfferedCourseClassSchedule = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.patch(
+    `/offeredCoursesClassSchedules/${id}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+
+  return response;
+};
+
 export const OfferedCourseClassScheduleService = {
   createOfferedCourseClassSchedule,
   getAllOfferedCourseClassSchedules,
-  getSingleOfferedCourseClassSchedule
+  getSingleOfferedCourseClassSchedule,
+  updateOfferedCourseClassSchedule
 };
