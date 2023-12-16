@@ -22,7 +22,18 @@ const getAllStudentEnrolledCourses = async (req: Request, res: Response, next: N
   }
 };
 
+const getSingleStudentEnrolledCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentEnrolledCourseService.getSingleStudentEnrolledCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentEnrolledCourseController = {
   createStudentEnrolledCourse,
-  getAllStudentEnrolledCourses
+  getAllStudentEnrolledCourses,
+  getSingleStudentEnrolledCourse
 };
