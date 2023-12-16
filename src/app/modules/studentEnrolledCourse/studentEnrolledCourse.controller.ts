@@ -32,8 +32,19 @@ const getSingleStudentEnrolledCourse = async (req: Request, res: Response, next:
   }
 };
 
+const updateStudentEnrolledCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentEnrolledCourseService.updateStudentEnrolledCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentEnrolledCourseController = {
   createStudentEnrolledCourse,
   getAllStudentEnrolledCourses,
-  getSingleStudentEnrolledCourse
+  getSingleStudentEnrolledCourse,
+  updateStudentEnrolledCourse
 };

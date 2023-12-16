@@ -9,4 +9,6 @@ router.get('/:id', StudentEnrolledCourseController.getSingleStudentEnrolledCours
 
 router.post('/', StudentEnrolledCourseController.createStudentEnrolledCourse);
 
+router.patch('/:id', StudentEnrolledCourseController.updateStudentEnrolledCourse);
+
 export const StudentEnrolledCourseRoutes = router;
