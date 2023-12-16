@@ -42,9 +42,20 @@ const updateStudentEnrolledCourse = async (req: Request, res: Response, next: Ne
   }
 };
 
+const deleteStudentEnrolledCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentEnrolledCourseService.deleteStudentEnrolledCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentEnrolledCourseController = {
   createStudentEnrolledCourse,
   getAllStudentEnrolledCourses,
   getSingleStudentEnrolledCourse,
-  updateStudentEnrolledCourse
+  updateStudentEnrolledCourse,
+  deleteStudentEnrolledCourse
 };
