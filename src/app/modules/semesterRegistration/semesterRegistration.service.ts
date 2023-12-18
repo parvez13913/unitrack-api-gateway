@@ -99,6 +99,19 @@ const withdrewFromCourse = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const confirmMyRegistration = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.post(
+    `/semesterRegistrations/confirmMyRegistration`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
 export const SemesterRegistrationService = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
@@ -107,5 +120,6 @@ export const SemesterRegistrationService = {
   deleteSemesterRegistration,
   startMySemesterRegistration,
   enrollIntoCourse,
-  withdrewFromCourse
+  withdrewFromCourse,
+  confirmMyRegistration
 };
