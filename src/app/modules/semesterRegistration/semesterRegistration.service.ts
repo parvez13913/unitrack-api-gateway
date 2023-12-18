@@ -112,6 +112,19 @@ const confirmMyRegistration = async (req: Request): Promise<IGenericResponse> =>
   return response;
 };
 
+const getMyRegistration = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get(
+    `/semesterRegistrations/getMyRegistration`,
+    {
+      params: req.query,
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
 export const SemesterRegistrationService = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
@@ -121,5 +134,6 @@ export const SemesterRegistrationService = {
   startMySemesterRegistration,
   enrollIntoCourse,
   withdrewFromCourse,
-  confirmMyRegistration
+  confirmMyRegistration,
+  getMyRegistration
 };

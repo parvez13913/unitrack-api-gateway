@@ -3,6 +3,8 @@ import { SemesterRegistrationController } from './semesterRegistration.controlle
 
 const router = express.Router();
 
+router.get('/getMyRegistration', SemesterRegistrationController.getMyRegistration);
+
 router.get('/', SemesterRegistrationController.getAllSemesterRegistrations);
 
 router.get('/:id', SemesterRegistrationController.getSingleSemesterRegistration);
