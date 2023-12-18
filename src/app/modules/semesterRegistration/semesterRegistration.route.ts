@@ -19,6 +19,8 @@ router.post('/withdrawFromCourse', SemesterRegistrationController.withdrewFromCo
 
 router.post('/confirmMyRegistration', SemesterRegistrationController.confirmMyRegistration);
 
+router.post('/:id/startNewSemester', SemesterRegistrationController.startNewSemester);
+
 router.patch('/:id', SemesterRegistrationController.updateSemesterRegistration);
 
 router.delete('/:id', SemesterRegistrationController.deleteSemesterRegistration);
