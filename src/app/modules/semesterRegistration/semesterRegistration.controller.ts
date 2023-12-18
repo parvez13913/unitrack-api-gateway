@@ -112,6 +112,20 @@ const startNewSemester = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
+const getMySemesterRegistrationCourses = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const result = await SemesterRegistrationService.getMySemesterRegistrationCourses(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
@@ -123,5 +137,6 @@ export const SemesterRegistrationController = {
   withdrewFromCourse,
   confirmMyRegistration,
   getMyRegistration,
-  startNewSemester
+  startNewSemester,
+  getMySemesterRegistrationCourses
 };

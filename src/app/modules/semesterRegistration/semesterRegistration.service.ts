@@ -139,6 +139,19 @@ const startNewSemester = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getMySemesterRegistrationCourses = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get(
+    `/semesterRegistrations/getMySemesterCourses`,
+    {
+      params: req.query,
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
 export const SemesterRegistrationService = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
@@ -150,5 +163,6 @@ export const SemesterRegistrationService = {
   withdrewFromCourse,
   confirmMyRegistration,
   getMyRegistration,
-  startNewSemester
+  startNewSemester,
+  getMySemesterRegistrationCourses
 };

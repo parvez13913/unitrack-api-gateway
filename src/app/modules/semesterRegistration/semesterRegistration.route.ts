@@ -5,6 +5,11 @@ const router = express.Router();
 
 router.get('/getMyRegistration', SemesterRegistrationController.getMyRegistration);
 
+router.get(
+  '/getMySemesterCourses',
+  SemesterRegistrationController.getMySemesterRegistrationCourses
+);
+
 router.get('/', SemesterRegistrationController.getAllSemesterRegistrations);
 
 router.get('/:id', SemesterRegistrationController.getSingleSemesterRegistration);
