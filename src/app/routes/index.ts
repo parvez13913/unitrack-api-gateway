@@ -1,3 +1,4 @@
+import { StudentEnrolledCourseMarkRoutes } from './../modules/studentEnrolledCourseMark/studentEnrolledCourseMark.route';
 import { OfferedCourseClassScheduleRoutes } from './../modules/offeredCourseClassSchedule/offeredCourseClassSchedule.route';
 import express from 'express';
 import { AcademicSemesterRoutes } from '../modules/academicSemester/academicSemester.route';
@@ -53,6 +54,10 @@ const moduleRoutes = [
   {
     path: '/studentEnrolledCourses',
     routes: StudentEnrolledCourseRoutes
+  },
+  {
+    path: '/studentEnrolledCourseMarks',
+    routes: StudentEnrolledCourseMarkRoutes
   },
   {
     path: '/semesterRegistrations',

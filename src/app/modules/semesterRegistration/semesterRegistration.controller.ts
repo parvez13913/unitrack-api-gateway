@@ -72,6 +72,16 @@ const enrollIntoCourse = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
+const withdrewFromCourse = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await SemesterRegistrationService.withdrewFromCourse(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const SemesterRegistrationController = {
   createSemesterRegistration,
   getAllSemesterRegistrations,
@@ -79,5 +89,6 @@ export const SemesterRegistrationController = {
   updateSemesterRegistration,
   deleteSemesterRegistration,
   startMySemesterRegistration,
-  enrollIntoCourse
+  enrollIntoCourse,
+  withdrewFromCourse
 };

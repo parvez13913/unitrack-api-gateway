@@ -62,7 +62,7 @@ const deleteSemesterRegistration = async (req: Request): Promise<IGenericRespons
 
 const startMySemesterRegistration = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.post(
-    `/semesterRegistrations/start-registration`,
+    `/semesterRegistrations/startRegistration`,
     {},
     {
       headers: {
@@ -75,7 +75,20 @@ const startMySemesterRegistration = async (req: Request): Promise<IGenericRespon
 
 const enrollIntoCourse = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.post(
-    `/semesterRegistrations/enroll-into-course`,
+    `/semesterRegistrations/enrollIntoCourse`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+  return response;
+};
+
+const withdrewFromCourse = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.post(
+    `/semesterRegistrations/withdrawFromCourse`,
     req.body,
     {
       headers: {
@@ -93,5 +106,6 @@ export const SemesterRegistrationService = {
   updateSemesterRegistration,
   deleteSemesterRegistration,
   startMySemesterRegistration,
-  enrollIntoCourse
+  enrollIntoCourse,
+  withdrewFromCourse
 };
