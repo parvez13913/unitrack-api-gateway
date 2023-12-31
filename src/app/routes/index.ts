@@ -12,10 +12,15 @@ import { SemesterRegistrationRoutes } from '../modules/semesterRegistration/seme
 import { OfferedCourseSectionRoutes } from '../modules/offeredCourseSection/offeredCourseSection.route';
 import { StudentEnrolledCourseRoutes } from '../modules/studentEnrolledCourse/studentEnrolledCourse.route';
 import { StudentSemesterPaymentRoutes } from '../modules/studentSemesterPayment/studentSemesterPayment.route';
+import { UserRoutes } from '../modules/user/user.route';
 
 const router = express.Router();
 
 const moduleRoutes = [
+  {
+    path: '/users',
+    routes: UserRoutes
+  },
   {
     path: '/academicSemesters',
     routes: AcademicSemesterRoutes
