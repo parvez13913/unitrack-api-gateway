@@ -50,6 +50,43 @@ const createStudent = async (req: Request) => {
   return response;
 };
 
+const createFaculty = async (req: Request) => {
+  const file = req.file as IUploadFile;
+  const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
+
+  if (uploadedImage) {
+    req.body.profileImage = uploadedImage.secure_url;
+  }
+
+  const { academicDepartment, academicFaculty } = req.body.faculty;
+
+  // Academic-Faculty
+  const academicFacultyResponse = await AuthService.get(
+    `/academicFaculties?syncId=${academicFaculty}`
+  );
+
+  if (academicFacultyResponse.data && Array.isArray(academicFacultyResponse.data)) {
+    req.body.faculty.academicFaculty = academicFacultyResponse.data[0].id;
+  }
+
+  // Academic-Department
+  const academicDepartmentResponse = await AuthService.get(
+    `/academicDepartments?syncId=${academicDepartment}`
+  );
+
+  if (academicDepartmentResponse.data && Array.isArray(academicDepartmentResponse.data)) {
+    req.body.faculty.academicDepartment = academicDepartmentResponse.data[0].id;
+  }
+
+  const response: IGenericResponse = await AuthService.post('/users/createFaculty', req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 export const UsersService = {
-  createStudent
+  createStudent,
+  createFaculty
 };

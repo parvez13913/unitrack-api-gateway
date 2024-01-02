@@ -18,4 +18,15 @@ router.post(
   }
 );
 
+router.post(
+  '/createFaculty',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  FileUploadHelper.upload.single('file'),
+  (req: Request, res: Response, next: NextFunction) => {
+    req.body = UserValidation.createFacultyZodSchema.parse(JSON.parse(req.body.data));
+
+    return UsersController.createFaculty(req, res, next);
+  }
+);
+
 export const UserRoutes = router;
