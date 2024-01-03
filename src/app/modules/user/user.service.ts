@@ -4,7 +4,7 @@ import { IUploadFile } from '../../../interfaces/file';
 import { AuthService } from '../../../shared/axios';
 import { IGenericResponse } from '../../../interfaces/common';
 
-const createStudent = async (req: Request) => {
+const createStudent = async (req: Request): Promise<IGenericResponse> => {
   const file = req.file as IUploadFile;
   const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
 
@@ -50,12 +50,12 @@ const createStudent = async (req: Request) => {
   return response;
 };
 
-const createFaculty = async (req: Request) => {
+const createFaculty = async (req: Request): Promise<IGenericResponse> => {
   const file = req.file as IUploadFile;
   const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
 
   if (uploadedImage) {
-    req.body.profileImage = uploadedImage.secure_url;
+    req.body.faculty.profileImage = uploadedImage.secure_url;
   }
 
   const { academicDepartment, academicFaculty } = req.body.faculty;
@@ -86,7 +86,25 @@ const createFaculty = async (req: Request) => {
   return response;
 };
 
+const createAdmin = async (req: Request): Promise<IGenericResponse> => {
+  const file = req.file as IUploadFile;
+  const uploadedImage = await FileUploadHelper.uploadToCloudinary(file);
+
+  if (uploadedImage) {
+    req.body.admin.profileImage = uploadedImage.secure_url;
+  }
+
+  const response: IGenericResponse = await AuthService.post('/users/createAdmin', req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const UsersService = {
   createStudent,
-  createFaculty
+  createFaculty,
+  createAdmin
 };

@@ -21,7 +21,17 @@ const createFaculty = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const createAdmin = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await UsersService.createAdmin(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const UsersController = {
   createStudent,
-  createFaculty
+  createFaculty,
+  createAdmin
 };
