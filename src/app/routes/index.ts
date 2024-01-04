@@ -13,10 +13,15 @@ import { OfferedCourseSectionRoutes } from '../modules/offeredCourseSection/offe
 import { StudentEnrolledCourseRoutes } from '../modules/studentEnrolledCourse/studentEnrolledCourse.route';
 import { StudentSemesterPaymentRoutes } from '../modules/studentSemesterPayment/studentSemesterPayment.route';
 import { UserRoutes } from '../modules/user/user.route';
+import { AuthenticationRoutes } from '../modules/auth/auth.route';
 
 const router = express.Router();
 
 const moduleRoutes = [
+  {
+    path: '/auth',
+    routes: AuthenticationRoutes
+  },
   {
     path: '/users',
     routes: UserRoutes
