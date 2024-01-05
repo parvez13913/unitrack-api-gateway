@@ -3,9 +3,16 @@ import { IGenericResponse } from '../../../interfaces/common';
 import { AuthService } from '../../../shared/axios';
 
 const loginUser = async (req: Request): Promise<IGenericResponse> => {
-  const response: IGenericResponse = await AuthService.post('/auth/login', req.body, {
+  const response: IGenericResponse = await AuthService.post('/auth/login', req.body);
+
+  return response;
+};
+
+const refreshToken = async (req: Request): Promise<IGenericResponse> => {
+  const { refreshToken } = req.cookies;
+  const response: IGenericResponse = await AuthService.post('/auth/refreshToken', req.body, {
     headers: {
-      Authorization: req.headers.authorization
+      cookie: `refreshToken=${refreshToken}`
     }
   });
 
@@ -13,5 +20,6 @@ const loginUser = async (req: Request): Promise<IGenericResponse> => {
 };
 
 export const AuthenticationSerice = {
-  loginUser
+  loginUser,
+  refreshToken
 };
