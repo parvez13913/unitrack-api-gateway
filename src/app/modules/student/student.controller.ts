@@ -12,6 +12,17 @@ const getAllStudents = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
+const getSingleStudent = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentService.getSingleStudent(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentController = {
-  getAllStudents
+  getAllStudents,
+  getSingleStudent
 };

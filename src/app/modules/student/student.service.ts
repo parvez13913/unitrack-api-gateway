@@ -13,6 +13,18 @@ const getAllStudents = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getSingleStudent = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await HttpService.get(`/students/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const StudentService = {
-  getAllStudents
+  getAllStudents,
+  getSingleStudent
 };
