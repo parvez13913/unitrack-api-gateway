@@ -35,8 +35,20 @@ const updateFaculty = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteFaculty = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.delete(`/faculties/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const FacultyService = {
   getAllFaculties,
   getSingleFaculty,
-  updateFaculty
+  updateFaculty,
+  deleteFaculty
 };

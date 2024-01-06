@@ -15,4 +15,10 @@ router.patch(
   FacultyController.updateFaculty
 );
 
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  FacultyController.deleteFaculty
+);
+
 export const FacultyRoutes = router;
