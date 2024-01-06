@@ -57,10 +57,22 @@ const getMyCourses = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getMyCourseStudents = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.get(`/faculties/myCourseStudents`, {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const FacultyService = {
   getAllFaculties,
   getSingleFaculty,
   updateFaculty,
   deleteFaculty,
-  getMyCourses
+  getMyCourses,
+  getMyCourseStudents
 };

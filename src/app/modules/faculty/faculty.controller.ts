@@ -52,10 +52,21 @@ const getMyCourses = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
+const getMyCourseStudents = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await FacultyService.getMyCourseStudents(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const FacultyController = {
   getAllFaculties,
   getSingleFaculty,
   updateFaculty,
   deleteFaculty,
-  getMyCourses
+  getMyCourses,
+  getMyCourseStudents
 };
