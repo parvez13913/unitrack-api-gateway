@@ -13,6 +13,17 @@ const getAllFaculties = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getSingleFaculty = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await CoreService.get(`/faculties/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 const updateFaculty = async (req: Request): Promise<IGenericResponse> => {
   const { id } = req.params;
   const response: IGenericResponse = await AuthService.patch(`/faculties/${id}`, req.body, {
@@ -26,5 +37,6 @@ const updateFaculty = async (req: Request): Promise<IGenericResponse> => {
 
 export const FacultyService = {
   getAllFaculties,
+  getSingleFaculty,
   updateFaculty
 };

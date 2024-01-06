@@ -12,6 +12,16 @@ const getAllFaculties = async (req: Request, res: Response, next: NextFunction) 
   }
 };
 
+const getSingleFaculty = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await FacultyService.getSingleFaculty(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const updateFaculty = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await FacultyService.updateFaculty(req);
@@ -24,5 +34,6 @@ const updateFaculty = async (req: Request, res: Response, next: NextFunction) =>
 
 export const FacultyController = {
   getAllFaculties,
+  getSingleFaculty,
   updateFaculty
 };
