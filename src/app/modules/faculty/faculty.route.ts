@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.get('/', FacultyController.getAllFaculties);
 
+router.get('/profile/:id', FacultyController.getFacultyProfile);
+
 router.get('/myCourses', FacultyController.getMyCourses);
 
 router.get('/:id', FacultyController.getSingleFaculty);
