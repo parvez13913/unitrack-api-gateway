@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get('/', StudentController.getAllStudents);
 
+router.get('/myCourses', StudentController.getMyCourses);
+
 router.get('/:id', StudentController.getSingleStudent);
 
 router.patch('/:id', StudentController.updateStudent);
