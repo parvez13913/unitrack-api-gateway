@@ -7,4 +7,6 @@ router.get('/', StudentController.getAllStudents);
 
 router.get('/:id', StudentController.getSingleStudent);
 
+router.patch('/:id', StudentController.updateStudent);
+
 export const StudentRoutes = router;

@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { IGenericResponse } from '../../../interfaces/common';
-import { CoreService as HttpService } from '../../../shared/axios';
+import { AuthService, CoreService as HttpService } from '../../../shared/axios';
 
 const getAllStudents = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await HttpService.get('/students', {
@@ -24,7 +24,19 @@ const getSingleStudent = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const updateStudent = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.patch(`/students/${id}`, req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const StudentService = {
   getAllStudents,
-  getSingleStudent
+  getSingleStudent,
+  updateStudent
 };
