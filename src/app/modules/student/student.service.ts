@@ -35,8 +35,20 @@ const updateStudent = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteStudent = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await HttpService.delete(`/students/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const StudentService = {
   getAllStudents,
   getSingleStudent,
-  updateStudent
+  updateStudent,
+  deleteStudent
 };

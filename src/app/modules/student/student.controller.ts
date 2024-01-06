@@ -32,8 +32,19 @@ const updateStudent = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const deleteStudent = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentService.deleteStudent(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentController = {
   getAllStudents,
   getSingleStudent,
-  updateStudent
+  updateStudent,
+  deleteStudent
 };
