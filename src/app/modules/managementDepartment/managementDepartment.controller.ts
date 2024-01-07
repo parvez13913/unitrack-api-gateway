@@ -12,6 +12,17 @@ const createDepartment = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
+const getAllDepartments = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ManagementDepartmentService.getAllDepartments(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const ManagementDepartmentController = {
-  createDepartment
+  createDepartment,
+  getAllDepartments
 };

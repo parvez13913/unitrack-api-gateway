@@ -16,6 +16,18 @@ const createDepartment = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getAllDepartments = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await AuthService.get('/managementDepartment', {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const ManagementDepartmentService = {
-  createDepartment
+  createDepartment,
+  getAllDepartments
 };
