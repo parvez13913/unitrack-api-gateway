@@ -62,11 +62,22 @@ const getMyAcademicInfos = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
+const getMyCourseSchedules = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentService.getMyCourseSchedules(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentController = {
   getAllStudents,
   getSingleStudent,
   updateStudent,
   deleteStudent,
   getMyCourses,
-  getMyAcademicInfos
+  getMyAcademicInfos,
+  getMyCourseSchedules
 };
