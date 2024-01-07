@@ -79,6 +79,17 @@ const getMyCourseSchedules = async (req: Request): Promise<IGenericResponse> => 
   return response;
 };
 
+const getStudentProfile = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.get(`/students/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const StudentService = {
   getAllStudents,
   getSingleStudent,
@@ -86,5 +97,6 @@ export const StudentService = {
   deleteStudent,
   getMyCourses,
   getMyAcademicInfos,
-  getMyCourseSchedules
+  getMyCourseSchedules,
+  getStudentProfile
 };

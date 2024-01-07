@@ -72,6 +72,16 @@ const getMyCourseSchedules = async (req: Request, res: Response, next: NextFunct
   }
 };
 
+const getStudentProfile = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await StudentService.getStudentProfile(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const StudentController = {
   getAllStudents,
   getSingleStudent,
@@ -79,5 +89,6 @@ export const StudentController = {
   deleteStudent,
   getMyCourses,
   getMyAcademicInfos,
-  getMyCourseSchedules
+  getMyCourseSchedules,
+  getStudentProfile
 };

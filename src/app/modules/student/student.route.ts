@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get('/', StudentController.getAllStudents);
 
+router.get('/profile/:id', StudentController.getStudentProfile);
+
 router.get('/myCourses', StudentController.getMyCourses);
 
 router.get('/myAcademicInfo', StudentController.getMyAcademicInfos);
