@@ -90,7 +90,7 @@ const moduleRoutes = [
     routes: StudentSemesterPaymentRoutes
   },
   {
-    path: '/managementDepartment',
+    path: '/managementDepartments',
     routes: ManagementDepartmentRoutes
   }
 ];
