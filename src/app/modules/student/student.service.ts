@@ -57,10 +57,22 @@ const getMyCourses = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getMyAcademicInfos = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await HttpService.get(`/students/myAcademicInfo`, {
+    params: req.query,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const StudentService = {
   getAllStudents,
   getSingleStudent,
   updateStudent,
   deleteStudent,
-  getMyCourses
+  getMyCourses,
+  getMyAcademicInfos
 };

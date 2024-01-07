@@ -7,6 +7,8 @@ router.get('/', StudentController.getAllStudents);
 
 router.get('/myCourses', StudentController.getMyCourses);
 
+router.get('/myAcademicInfo', StudentController.getMyAcademicInfos);
+
 router.get('/:id', StudentController.getSingleStudent);
 
 router.patch('/:id', StudentController.updateStudent);
