@@ -32,8 +32,19 @@ const updateAdmin = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const deleteAdmin = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AdminService.deleteAdmin(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AdminController = {
   getAllAdmins,
   getSingleAdmin,
-  updateAdmin
+  updateAdmin,
+  deleteAdmin
 };

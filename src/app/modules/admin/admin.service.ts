@@ -35,8 +35,20 @@ const updateAdmin = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteAdmin = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.delete(`/admins/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const AdminService = {
   getAllAdmins,
   getSingleAdmin,
-  updateAdmin
+  updateAdmin,
+  deleteAdmin
 };
