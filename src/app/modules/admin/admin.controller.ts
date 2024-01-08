@@ -12,6 +12,17 @@ const getAllAdmins = async (req: Request, res: Response, next: NextFunction) => 
   }
 };
 
+const getSingleAdmin = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AdminService.getSingleAdmin(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AdminController = {
-  getAllAdmins
+  getAllAdmins,
+  getSingleAdmin
 };

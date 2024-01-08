@@ -13,6 +13,18 @@ const getAllAdmins = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const getSingleAdmin = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.get(`/admins/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const AdminService = {
-  getAllAdmins
+  getAllAdmins,
+  getSingleAdmin
 };
