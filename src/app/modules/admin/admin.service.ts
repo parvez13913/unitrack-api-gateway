@@ -24,7 +24,19 @@ const getSingleAdmin = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const updateAdmin = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.patch(`/admins/${id}`, req.body, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const AdminService = {
   getAllAdmins,
-  getSingleAdmin
+  getSingleAdmin,
+  updateAdmin
 };

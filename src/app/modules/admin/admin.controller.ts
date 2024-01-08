@@ -22,7 +22,18 @@ const getSingleAdmin = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
+const updateAdmin = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AdminService.updateAdmin(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AdminController = {
   getAllAdmins,
-  getSingleAdmin
+  getSingleAdmin,
+  updateAdmin
 };
