@@ -38,8 +38,24 @@ const getSingleDepartment = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const updateDepartment = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.patch(
+    `/managementDepartments/${id}`,
+    req.body,
+    {
+      headers: {
+        Authorization: req.headers.authorization
+      }
+    }
+  );
+
+  return response;
+};
+
 export const ManagementDepartmentService = {
   createDepartment,
   getAllDepartments,
-  getSingleDepartment
+  getSingleDepartment,
+  updateDepartment
 };
