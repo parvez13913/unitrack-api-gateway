@@ -11,4 +11,6 @@ router.post('/', ManagementDepartmentController.createDepartment);
 
 router.patch('/:id', ManagementDepartmentController.updateDepartment);
 
+router.delete('/:id', ManagementDepartmentController.deleteDepartment);
+
 export const ManagementDepartmentRoutes = router;

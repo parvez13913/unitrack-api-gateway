@@ -53,9 +53,21 @@ const updateDepartment = async (req: Request): Promise<IGenericResponse> => {
   return response;
 };
 
+const deleteDepartment = async (req: Request): Promise<IGenericResponse> => {
+  const { id } = req.params;
+  const response: IGenericResponse = await AuthService.delete(`/managementDepartments/${id}`, {
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+
+  return response;
+};
+
 export const ManagementDepartmentService = {
   createDepartment,
   getAllDepartments,
   getSingleDepartment,
-  updateDepartment
+  updateDepartment,
+  deleteDepartment
 };

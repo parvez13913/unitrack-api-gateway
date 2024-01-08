@@ -42,9 +42,20 @@ const updateDepartment = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
+const deleteDepartment = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await ManagementDepartmentService.deleteDepartment(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const ManagementDepartmentController = {
   createDepartment,
   getAllDepartments,
   getSingleDepartment,
-  updateDepartment
+  updateDepartment,
+  deleteDepartment
 };
