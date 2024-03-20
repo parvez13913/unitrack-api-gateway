@@ -34,7 +34,7 @@ router.post(
   '/enrollIntoCourse',
   validateRequest(SemesterRegistrationValidation.inrollCourseZodSchema),
   auth(ENUM_USER_ROLE.STUDENT),
-  SemesterRegistrationController.startMySemesterRegistration
+  SemesterRegistrationController.enrollIntoCourse
 );
 
 router.post(
