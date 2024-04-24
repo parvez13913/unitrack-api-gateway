@@ -13,13 +13,13 @@ router.get('/profile/:id', FacultyController.getFacultyProfile);
 
 router.get('/myCourses', auth(ENUM_USER_ROLE.FACULTY), FacultyController.getMyCourses);
 
-router.get('/:id', FacultyController.getSingleFaculty);
-
 router.get(
   '/myCourseStudents',
   auth(ENUM_USER_ROLE.FACULTY),
   FacultyController.getMyCourseStudents
 );
+
+router.get('/:id', FacultyController.getSingleFaculty);
 
 router.patch(
   '/:id',
