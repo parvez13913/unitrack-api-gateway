@@ -11,10 +11,10 @@ router.get('/', StudentEnrolledCourseMarkController.getAllStudentEnrolledCourseM
 
 router.get('/myMarks', StudentEnrolledCourseMarkController.getMyCourseMarks);
 
-router.patch(
+router.post(
   '/updateMarks',
-  validateRequest(StudentEnrolledCourseMarkValidation.updateStudentMarks),
   auth(ENUM_USER_ROLE.FACULTY),
+  validateRequest(StudentEnrolledCourseMarkValidation.updateStudentMarks),
   StudentEnrolledCourseMarkController.updateStudentMarks
 );
 

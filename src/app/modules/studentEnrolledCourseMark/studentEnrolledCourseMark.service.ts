@@ -38,7 +38,7 @@ const updateStudentMarks = async (req: Request): Promise<IGenericResponse> => {
 };
 
 const updateFinalMarks = async (req: Request): Promise<IGenericResponse> => {
-  const response: IGenericResponse = await CoreService.post(
+  const response: IGenericResponse = await CoreService.patch(
     '/studentEnrolledCourseMarks/updateFinalMarks',
     req.body,
     {
