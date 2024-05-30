@@ -8,14 +8,14 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const result = await AuthenticationSerice.loginUser(req);
 
-    const { refreshToken, ...others } = result.data;
+    const { ...others } = result.data;
 
     // Set refreshToken into browser cookie
-    const cookieOptions = {
-      secure: config.env === 'production',
-      httpOnly: true
-    };
-    res.cookie('refreshToken', result?.data?.refreshToken, cookieOptions);
+    // const cookieOptions = {
+    //   secure: config.env === 'production',
+    //   httpOnly: true
+    // };
+    // res.cookie('refreshToken', result?.data?.refreshToken, cookieOptions);
 
     sendResponse(res, {
       statusCode: httpStatus.OK,
