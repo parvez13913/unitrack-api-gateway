@@ -18,6 +18,7 @@ import { FacultyRoutes } from '../modules/faculty/faculty.route';
 import { StudentRoutes } from '../modules/student/student.route';
 import { ManagementDepartmentRoutes } from '../modules/managementDepartment/managementDepartment.route';
 import { AdminRoutes } from '../modules/admin/admin.route';
+import { PaymentRoutes } from '../modules/payments/payments.route';
 
 const router = express.Router();
 
@@ -97,7 +98,11 @@ const moduleRoutes = [
   {
     path: '/admins',
     routes: AdminRoutes
-  }
+  },
+  {
+    path: '/payments',
+    routes: PaymentRoutes
+  },
 ];
 
 moduleRoutes.forEach((route) => {
