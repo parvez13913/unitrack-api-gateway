@@ -15,6 +15,7 @@ const getAllFaculties = async (req: Request): Promise<IGenericResponse> => {
 
 const getSingleFaculty = async (req: Request): Promise<IGenericResponse> => {
   const { id } = req.params;
+
   const response: IGenericResponse = await CoreService.get(`/faculties/${id}`, {
     headers: {
       Authorization: req.headers.authorization

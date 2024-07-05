@@ -12,6 +12,29 @@ const getMySemesterPayments = async (req: Request): Promise<IGenericResponse> =>
   return response;
 };
 
+
+const initiatePayment = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.post('/studentSemesterPayments/initiatePayment', {
+    params: req.body,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
+const completePayment = async (req: Request): Promise<IGenericResponse> => {
+  const response: IGenericResponse = await CoreService.post('/studentSemesterPayments/completePayment', {
+    params: req.body,
+    headers: {
+      Authorization: req.headers.authorization
+    }
+  });
+  return response;
+};
+
 export const StudentSemesterPaymentService = {
-  getMySemesterPayments
+  getMySemesterPayments,
+  initiatePayment,
+  completePayment
 };
