@@ -62,8 +62,30 @@ const changePassword = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
+const forgotPassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AuthenticationSerice.forgotPassword(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const result = await AuthenticationSerice.resetPassword(req);
+
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AuthenticationController = {
   loginUser,
   refreshToken,
-  changePassword
+  changePassword,
+  forgotPassword,
+  resetPassword
 };
