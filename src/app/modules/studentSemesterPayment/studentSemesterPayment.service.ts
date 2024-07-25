@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { IGenericResponse } from '../../../interfaces/common';
 import { CoreService } from '../../../shared/axios';
 
-const getMySemesterPayments = async (req: Request): Promise<IGenericResponse> => {
+const getMySemesterPayment = async (req: Request): Promise<IGenericResponse> => {
   const response: IGenericResponse = await CoreService.get('/studentSemesterPayments/mySemesterPayments', {
     params: req.query,
     headers: {
@@ -34,7 +34,7 @@ const completePayment = async (req: Request): Promise<IGenericResponse> => {
 };
 
 export const StudentSemesterPaymentService = {
-  getMySemesterPayments,
+  getMySemesterPayment,
   initiatePayment,
   completePayment
 };
