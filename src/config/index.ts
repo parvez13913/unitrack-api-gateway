@@ -31,4 +31,9 @@ export default {
   authServiceUrl: envVars.AUTH_SERVICE_URL,
   coreServiceUrl: envVars.CORE_SERVICE_URL,
   paymentServiceUrl: envVars.PAYMENT_SERVICE_URL,
+  cloudinary: {
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
+  }
 };
